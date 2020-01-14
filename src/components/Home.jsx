@@ -1,7 +1,20 @@
 import React, {Component} from 'react';
+import UserService from './services/UserService';
 
-export default function Home(){
-    return(
-        <div>Home</div>
-    );
+const userService = new UserService();
+
+export default class Home extends Component{
+    componentDidMount(){
+        userService.getUser()
+        .then(response => {
+            console.log(response.data);
+        })
+        .catch(errors => console.log(errors))
+    }
+    render(){
+
+        return(
+            <div>Home</div>
+        );
+    }
 }

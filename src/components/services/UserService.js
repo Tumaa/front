@@ -8,4 +8,11 @@ export default class UserService{
         const url = `${APIURL}token_auth/`;
         return axios.post(url,user);
     }
+    getUser(){
+        const url = `${APIURL}current_user/`;
+        return axios.get(url,{
+            headers:{Authorization: `Bearer ${localStorage.getItem('access')}`}
+        }); 
+    }
+
 }

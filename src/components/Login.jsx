@@ -26,7 +26,9 @@ export default class Login extends Component{
 
         userService.loginUser(this.state)
         .then(response =>{
-            localStorage.setItem('token', response.data.token);
+            console.log(response.data);
+            localStorage.setItem('access', response.data.access);
+            localStorage.setItem('refresh', response.data.refresh);
             this.props.history.push('/home');
         })
         .catch(error => {
